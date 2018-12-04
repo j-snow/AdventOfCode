@@ -6,4 +6,5 @@ current_frequency = 0
 for frequency in frequencies:
 	current_frequency += int(frequency)
 
-print current_frequency
+print "Part 1: " + str(current_frequency)
+
