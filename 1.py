@@ -1,4 +1,4 @@
-Frequencies = [
+frequencies = [
 	'-12',
 	'-6',
 	'-12',
@@ -978,4 +978,8 @@ Frequencies = [
 	'-71491',
 ]
 
-print Frequencies
+current_frequency = 0
+for frequency in frequencies:
+	current_frequency += int(frequency)
+
+print current_frequency
