@@ -275,3 +275,12 @@ for box_id in box_ids:
 print "Part 1: " + str(letters_counted_twice*letters_counted_thrice)
 # Part 1: 5456
 
+for box_id in box_ids:
+	box_ids.remove(box_id) # remove from list so we don't check it again
+	for box_id_2 in box_ids:
+		zipped = zip(box_id, box_id_2)
+		original_length = len(zipped)
+		matches = [a for a, b in zipped if a == b]
+		if len(matches) == original_length - 1:
+			print ''.join(matches)
+			# megsdlpulxvinkatfoyzxcbvq
