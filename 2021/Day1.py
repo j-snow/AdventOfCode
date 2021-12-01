@@ -20,7 +20,9 @@ with open('Day1Input.txt', 'r') as file:
 
 	depths = [int(line) for line in lines]
 
-	print("Day 1 solution: " + str(count_increases(depths)))
+	part1 = count_increases(depths)
+	assert part1 == 1832
+	print("Day 1, part 1 solution: " + str(part1))
 
 	windows = []
 	for i, depth in enumerate(depths):
@@ -30,4 +32,6 @@ with open('Day1Input.txt', 'r') as file:
 		window = sum(depths[i:i+3])
 		windows.append(window)
 
-	print("Day 2 solution: " + str(count_increases(windows)))
+	part2 = count_increases(windows)
+	assert part2 == 1858
+	print("Day 1, part 2 solution: " + str(part2))
