@@ -21,10 +21,6 @@ def add_fish(fish, amount):
 
 # Examples
 test_input = [3,4,3,1,2]
-prepared_test_input = prepare_array(test_input)
-assert prepared_test_input == [0,1,1,2,1,0,0,0,0]
-
-test_result = add_fish(prepared_test_input, 1)
 
 prepared_test_input = prepare_array(test_input)
 test_result = add_fish(prepared_test_input, 18)
@@ -34,7 +30,6 @@ assert test_result == prepare_array([6,0,6,4,5,6,0,1,1,2,6,0,1,1,1,2,2,3,3,4,6,7
 prepared_test_input = prepare_array(test_input)
 test_result = add_fish(prepared_test_input, 80)
 assert sum(test_result) == 5934
-
 
 prepared_test_input = prepare_array(test_input)
 test_result = add_fish(prepared_test_input, 256)
