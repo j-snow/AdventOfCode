@@ -1,3 +1,5 @@
+from itertools import permutations
+
 def normalise_input(array):
 	normalised_input = array
 
@@ -25,7 +27,11 @@ def display_number(number, mapping):
 		[0, 1, 2, 3, 5, 6], # 9
 	]
 
-	return valid_combinations.index(segments)
+	if segments in valid_combinations:
+		return valid_combinations.index(segments)
+	else:
+		return None
+
 
 def display_numbers(numbers, mapping):
 	display = []
@@ -110,6 +116,25 @@ def find_mapping(input):
 			mapping[3] = letter
 
 	return mapping
+
+def brute_force_find_mapping(input):
+	numbers = input
+	numbers = numbers[0]
+
+	possible_mappings = permutations(['a','b','c','d','e','f','g'])
+	for possible_mapping in list(possible_mappings):
+		matches = []
+		for number in numbers:
+			display = display_number(number, possible_mapping)
+
+			if display == None:
+				break
+
+			matches.append(display)
+
+		if len(matches) == 10:
+			return list(possible_mapping)
+
 
 test_input = ["acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf"]
 test_input = normalise_input(test_input)
