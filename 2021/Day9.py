@@ -4,7 +4,7 @@ def find_low_points(height_map):
 		for x in range(0, len(height_map[0])):
 			point = height_map[y][x]
 			surrounding_points = []
-			
+
 			if y > 0:
 				surrounding_points.append(height_map[y-1][x])
 
@@ -40,3 +40,14 @@ assert test_solution == [1,0,5,5]
 
 sum_risk_levels = sum(test_solution) + len(test_solution)
 assert sum_risk_levels == 15
+
+with open('Day9Input.txt') as file:
+	input = []
+	for line in file:
+		input.append([int(x) for x in list(line.strip())])
+
+	solution_low_points = find_low_points(input)
+
+	solution = sum(solution_low_points) + len(solution_low_points)
+	assert solution == 494
+	print("Day 9, solution 1: " + str(solution))
