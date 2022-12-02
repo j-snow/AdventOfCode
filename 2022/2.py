@@ -47,8 +47,59 @@ def rock_paper_scissors_score(file_name):
 
 	return my_score_total
 
+
 assert rock_paper_scissors_score('2example.txt') == 15
 
 p1 = rock_paper_scissors_score('2input.txt')
 print(p1)
 assert p1 == 14827
+
+
+losing_combinations = {
+	'B': 'X',
+	'C': 'Y',
+	'A': 'Z',
+}
+
+winning_combinations_against = {
+	'C': 'X',
+	'A': 'Y',
+	'B': 'Z',
+}
+
+
+# X means you need to lose, Y means you need to end the round in a draw, and Z means you need to win.
+def rock_paper_scissors_choice(file_name):
+	rounds = Util.split_file_by_new_line(file_name)
+
+	my_score_total = 0
+
+	for round in rounds:
+		my_score = 0
+
+		split = round.split(' ')
+		their_choice = split[0]
+		wld = split[1]
+
+		if wld == 'X':
+			# Lose
+			my_choice = losing_combinations[their_choice]
+		elif wld == 'Y':
+			# Draw
+			my_choice = their_choice
+			my_score += 3
+		elif wld == 'Z':
+			my_choice = winning_combinations_against[their_choice]
+			my_score += 6
+
+		my_score += scoring[my_choice]
+		my_score_total += my_score
+
+	return my_score_total
+
+
+assert rock_paper_scissors_choice('2example.txt') == 12
+
+p2 = rock_paper_scissors_choice('2input.txt')
+print(p2)
+assert p2 == 13889
