@@ -25,7 +25,6 @@ def rock_paper_scissors_score(file_name):
 
 	for round in rounds:
 		my_score = 0
-		their_score = 0
 
 		split = round.split(' ')
 		their_choice = split[0]
@@ -34,16 +33,15 @@ def rock_paper_scissors_score(file_name):
 		my_choice_score = scoring[my_choice]
 		their_choice_score = scoring[their_choice]
 
-		my_score = my_score + my_choice_score
-		their_score = their_score + their_choice_score
+		my_score += my_choice_score
 
 		if my_choice_score == their_choice_score:
 			# Draw
-			my_score = my_score + 3
+			my_score += 3
 		elif winning_combinations[my_choice] == their_choice:
-			my_score = my_score + 6
+			my_score += 6
 
-		my_score_total = my_score_total + my_score
+		my_score_total += my_score
 
 	return my_score_total
 
