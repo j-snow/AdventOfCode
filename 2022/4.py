@@ -6,7 +6,7 @@ def get_set(r):
 	return list(range(int(s[0]), int(s[1])+1))
 
 
-def find_overlap_count(file_name):
+def find_overlap_count(file_name, partial_overlap):
 	assignments = Util.split_file_by_new_line(file_name)
 
 	total = 0
@@ -27,9 +27,21 @@ def find_overlap_count(file_name):
 			total += 1
 			continue
 
+		if partial_overlap:
+			set1 = get_set(pairs[0])
+			set2 = get_set(pairs[1])
+			intersection = Util.array_intersect(set1, set2)
+			if intersection:
+				total += 1
+				continue
+
 	return total
 
 
-assert find_overlap_count('4example.txt') == 2
-assert find_overlap_count('4input.txt') == 560
-print(find_overlap_count('4input.txt'))
+assert find_overlap_count('4example.txt', False) == 2
+assert find_overlap_count('4input.txt', False) == 560
+print(find_overlap_count('4input.txt', False))
+
+assert find_overlap_count('4example.txt', True) == 4
+assert find_overlap_count('4input.txt', True) == 839
+print(find_overlap_count('4input.txt', True))
