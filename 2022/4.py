@@ -14,20 +14,18 @@ def find_overlap_count(file_name):
 	for assignment_pairs in assignments:
 		pairs = assignment_pairs.split(',')
 
-		# If strings match one contains the other so add to total and continue, no need to go through the rest
-		if pairs[0] == pairs[1]:
+		first = pairs[0].split('-')
+		first = (int(first[0]), int(first[1]))
+		second = pairs[1].split('-')
+		second = (int(second[0]), int(second[1]))
+
+		if first[0] <= second[0] and first[1] >= second[1]:
+			print([first, second])
 			total += 1
 			continue
 
-		set1 = get_set(pairs[0])
-		set2 = get_set(pairs[1])
-
-		intersection = Util.array_intersect(set1, set2)
-		if intersection == set1:
-			total += 1
-			continue
-
-		if intersection == set2:
+		if second[0] <= first[0] and second[1] >= first[1]:
+			print([first, second])
 			total += 1
 			continue
 
@@ -35,4 +33,5 @@ def find_overlap_count(file_name):
 
 
 assert find_overlap_count('4example.txt') == 2
+assert find_overlap_count('4input.txt') == 560
 print(find_overlap_count('4input.txt'))
