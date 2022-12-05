@@ -1,11 +1,6 @@
 import Util
 
 
-def array_intersect(arr1, arr2):
-	intersected_set = set(arr1) & set(arr2)
-	return list(intersected_set)
-
-
 def character_value(char):
 	ascii_no = ord(char)
 	if char.isupper():
@@ -27,7 +22,7 @@ def count_character_values(file_name):
 
 	total = 0
 	for rucksack in rucksacks:
-		diff = array_intersect(rucksack[0], rucksack[1])
+		diff = Util.array_intersect(rucksack[0], rucksack[1])
 		char = diff[0]
 		char_value = character_value(char)
 
@@ -44,7 +39,7 @@ def find_badges(file_name):
 		three_rucksacks = input[:3]
 		input = input[3:]
 
-		common_character = array_intersect(array_intersect(three_rucksacks[0], three_rucksacks[1]), three_rucksacks[2])
+		common_character = Util.array_intersect(Util.array_intersect(three_rucksacks[0], three_rucksacks[1]), three_rucksacks[2])
 		assert len(common_character) == 1
 		char_value = character_value(common_character[0])
 		total += char_value
