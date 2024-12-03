@@ -34,7 +34,7 @@ def similarity_score(pairs):
 	return total
 
 
-with open('D1Input.txt') as file:
+with open('2024/Day1/D1Input.txt') as file:
 	pairs = parse_input(file)
 	print(add_up_location_distances(pairs))
 	print(similarity_score(pairs))
