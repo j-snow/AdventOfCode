@@ -12,14 +12,17 @@ def parse_input_part1(file):
 
 def parse_input_part2(file):
 	multiplications = []
+	string = ''
 	for line in file:
-		dos = []
-		parts = line.split('do()')
-		for part in parts:
-			dos.append(part.split("don't()")[0])
+		string += line
 
-		for do in dos:
-			multiplications.extend(re.findall('mul\((\d{1,3}),(\d{1,3})\)', do))
+	dos = []
+	parts = string.split('do()')
+	for part in parts:
+		dos.append(part.split("don't()")[0])
+
+	for do in dos:
+		multiplications.extend(re.findall('mul\((\d{1,3}),(\d{1,3})\)', do))
 
 	return multiplications
 

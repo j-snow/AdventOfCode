@@ -24,7 +24,7 @@ class D3TestCase(unittest.TestCase):
 			input = main.parse_input_part2(file)
 			result = main.multiply(input)
 			print("Day 3 part 2 : " + str(result))
-			self.assertEqual(None, result)
+			self.assertEqual(102467299, result)
 
 
 if __name__ == '__main__':
